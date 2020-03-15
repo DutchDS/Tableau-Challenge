@@ -9,7 +9,7 @@ A python script loops through all 53 months of files and sequentially appends th
 
 A database view on the **trip level** was created as can be seen below. This way the trip distance is calculated per trip, the gender is derived and the age is calculated, before being passed to Tableau. Some extra date fields are added for convenience as well.
 
-CREATE VIEW **bike_data_v** as 		
+CREATE VIEW **bike_data_v** as
 SELECT 		
 	bikeid AS bike_id,	
 	starttime AS start_time,	
@@ -32,22 +32,21 @@ SELECT
 	end_station_latitude,	
 	end_station_longitude,	
 	CASE 	
-		WHEN gender = 0 THEN 'Undefined'
-		WHEN gender = 1 THEN 'Male'
-		ELSE 'Female'
+	WHEN gender = 0 THEN 'Undefined'
+	WHEN gender = 1 THEN 'Male'
+	ELSE 'Female'
 	END AS gender,	
 	usertype as user_type,	
 	CASE WHEN birth_year IS NOT NULL 	
-            THEN 2020-birth_year 		
-            ELSE 0		
-    END AS age,		
+	THEN 2020-birth_year 		
+	ELSE 0		
+ 	END AS age,		
 	birth_year	
 FROM bike_data		
 WHERE year in ('2016', '2017', '2018', '2019')		
 AND NOT (tripduration < 300 AND start_station_id=end_station_id)		
 		
 		
-
 **Data Cleaning / Issues along the way:**
 
 - the format of the .csv files changed a bit over time. Mainly the headers. The 'old' format was adjusted manually before being processed by the Python script and before being saved to the database.
