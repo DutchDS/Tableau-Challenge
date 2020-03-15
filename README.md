@@ -3,6 +3,8 @@ By Aukje Rijpkema 3/12/2020
 
 For the stories behind Tableau's [webpage](https://public.tableau.com/views/NYCityBikeDashboard_15838437149040/BIkeStory?:display_count=y&publish=yes&:origin=viz_share_link), please click [here](STORY.md). This website contains 8 tabs (=8 dashboards) and covers 6 'views' on the data provided. 
 
+![Images/Dash.png](Images/Dash.png)
+
 Data for City Bike goes back to mid 2013. Since they change the format in which they provided the data in September of 2015, which is over 4 years ago, I decided there was enough history and data available in the files from then on forward. See folder /Resources.
 
 A python script loops through all 53 months of files and sequentially appends them to a postgres database called bike.db. The reason I choose to cleanup and enhance the data at the database level was because that way, all further views/reports/queries would use the same definitions. There could be no confusion about it. See folder /Scripts for Jupyter notebook and all_files.txt for the notebook to loop over.
